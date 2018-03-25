@@ -1,0 +1,93 @@
+.align_center {
+    text-align: center;
+}
+
+.align_right {
+    text-align: right;
+}
+
+.static_multiline {
+    display: inline-block;
+}
+
+.edit_multiline {
+    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.thin_border {
+    border: 1px solid #F00;
+}
+
+.thick_border {
+    border: 2px solid #F00;
+}
+
+.has_border {
+    border: 1px solid;
+}
+
+.hidden_border {
+    border-style: hidden;
+}
+
+.emboss_border {
+    border: 1px solid;
+}
+
+.threed_border {
+    border-style: outset;
+}
+
+.threedsunken_border {
+    border-style: inset;
+}
+
+.twod_border {
+    border: 2px solid;
+}
+
+.windows_border {
+    border: 2px solid;
+}
+
+.tab_control {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+.tab_button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+}
+
+.tab_button_active {
+  background-color: #ccc;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+}
+
+.tab_button:hover {
+  background-color: #ddd;
+}
+
+.tab_content {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  clear:both;
+}
+
+
+

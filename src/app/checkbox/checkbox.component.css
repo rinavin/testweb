@@ -1,0 +1,31 @@
+/*this is a component css*/
+
+.checkboxProps {
+    position: absolute;
+    height: 100vh;
+    width: 100vh;
+}
+
+.Label11534339Props {
+    position: absolute;
+    top: 13px;
+    left: 6px;
+    height: 15px;
+    width: 11px;
+}
+
+.aProps {
+    position: absolute;
+    top: 13px;
+    left: 23px;
+    height: 20px;
+    width: 76px;
+}
+
+.bProps {
+    position: absolute;
+    top: 48px;
+    left: 12px;
+    height: 19px;
+    width: 76px;
+}

@@ -1,0 +1,19 @@
+{
+  "components": [
+    {
+      "path": "web/",
+      "name": "web",
+      "uniqueName": "web_web"
+    },
+    {
+      "path": "aaa/",
+      "name": "web1",
+      "uniqueName": "aaa_web1"
+    },
+    {
+      "path": "checkbox/",
+      "name": "checkbox",
+      "uniqueName": "checkbox_checkbox"
+    }
+  ]
+}
