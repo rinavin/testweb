@@ -1,0 +1,76 @@
+<form
+    novalidate
+    [formGroup]="screenFormGroup"
+>
+    <div
+        magic="WEBListBox1"
+        class="WEBListBox1Props"
+    >
+        <label
+            magic="Label1"
+            class="Label1Props"
+        >
+            {{mgGetText('Label1')}}
+            </label>
+            <label
+                magic="Label2"
+                class="Label2Props mgColor3"
+            >
+                {{mgGetText('Label2')}}
+                </label>
+                <div>
+                    <select
+                        multiple
+                        (change)="mgOnListBoxSelectionChanged($event,'ListBox')"
+                        magic="ListBox"
+                        class="ListBoxProps"
+                        formControlName="ListBox"
+                    >
+                        <option
+                            *ngFor="let o of mgGetItemListValues('ListBox');"
+                            [value]="o.index"
+                        >
+                            {{o.realString}}
+                            </option>
+                            </select>
+                </div>
+                <div>
+                    <select
+                        (change)="mgOnSelectionChanged($event,'ComboBox')"
+                        value="mgGetSelectedValue('ComboBox')"
+                        magic="ComboBox"
+                        class="ComboBoxProps"
+                        formControlName="ComboBox"
+                    >
+                        <option
+                            *ngFor="let o of mgGetItemListValues('ComboBox');"
+                            [selected]="o.index == mgGetSelectedValue('ComboBox')"
+                            [value]="o.index"
+                        >
+                            {{o.realString}}
+                            </option>
+                            </select>
+                </div>
+                <div
+                    magic="radio"
+                    class="radioProps"
+                    (change)="mgOnRadioSelectionChanged($event,'radio')"
+                >
+                    <div *ngFor="let o of mgGetItemListValues('radio');">
+                        <label>
+           <input
+                type="radio"
+                magic="radio"
+
+
+                formControlName="radio"
+
+                [value] = "o.index"
+                
+           />
+           {{o.realString}}
+        </label>
+                    </div>
+                    </div>
+                    </div>
+                    </form>
