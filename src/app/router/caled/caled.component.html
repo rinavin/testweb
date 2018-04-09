@@ -1,0 +1,64 @@
+<form
+    novalidate
+    [formGroup]="screenFormGroup"
+>
+    <div
+        magic="caled"
+        class="caledProps"
+    >
+        <label
+            magic="Label11534339"
+            class="Label11534339Props"
+        >
+            {{mgGetText('Label11534339')}}
+            </label>
+            <mat-form-field
+                magic="a"
+                class="aProps"
+            >
+                <div>
+                    <input
+                        matInput
+                        formControlName="a"
+                        pattern="^.{0,10}$"
+                    >
+                        <div *ngIf="(screenFormGroup.get('a').touched) && (screenFormGroup.get('a').hasError('pattern')
+          )">
+                            <p>control status: {{ screenFormGroup.get('a').errors | json }}</p>
+                        </div>
+                </div>
+                <!--
+            <button mat-button *ngIf="value" mdSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+            </button>
+    -->
+                </mat-form-field>
+                <label
+                    magic="Label11534340"
+                    class="Label11534340Props"
+                >
+                    {{mgGetText('Label11534340')}}
+                    </label>
+                    <mat-form-field
+                        magic="b"
+                        class="bProps"
+                    >
+                        <div>
+                            <input
+                                matInput
+                                formControlName="b"
+                                pattern="^.{0,10}$"
+                            >
+                                <div *ngIf="(screenFormGroup.get('b').touched) && (screenFormGroup.get('b').hasError('pattern')
+          )">
+                                    <p>control status: {{ screenFormGroup.get('b').errors | json }}</p>
+                                </div>
+                        </div>
+                        <!--
+            <button mat-button *ngIf="value" mdSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+            </button>
+    -->
+                        </mat-form-field>
+                        </div>
+                        </form>
