@@ -6,7 +6,6 @@ import {BaseTaskMagicComponent} from "./app.baseMagicComponent";
 
 @Component({
   selector: 'm-subform',
-
   template:    `
     <ndc-dynamic  [ndcDynamicComponent]="Component" [ndcDynamicInputs]="Parameters">
     </ndc-dynamic>

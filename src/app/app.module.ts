@@ -10,8 +10,10 @@ import {ComponentsList} from "./ComponentList";
 import {ThemeModule} from "./magic/src/ui/theme/theme.module";
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import {CalendarModule} from 'primeng/components/calendar/calendar';
-import {MatTableModule, MatPaginatorModule, MatInputModule,  MatDialogModule} from '@angular/material';
+import {MatTableModule, MatPaginatorModule, MatInputModule,  MatDialogModule, MatTooltipModule} from '@angular/material';
 import {TextEditDialogComponent} from './magic/src/ui/TextEditDialog/textedit.dialog';
+import {RouterModule} from '@angular/router';
+import {routes} from './Routes';
 
 const comps = ComponentsList.getAllComponents();
 
@@ -33,6 +35,8 @@ const comps = ComponentsList.getAllComponents();
       MatDialogModule,
       MatInputModule,
       ThemeModule,
+      MatTooltipModule,
+      RouterModule.forRoot(routes)
    ],
    exports     : [FormsModule, ReactiveFormsModule, InfiniteScrollModule, MatTableModule, MatPaginatorModule],
    providers   : [],

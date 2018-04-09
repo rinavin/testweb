@@ -11,12 +11,15 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/filter';
 import {StorageAttribute} from "@magic/utils";
 import {NString} from "@magic/mscorelib";
+import { MagicProperties } from "@magic/utils";
 
 
 import {ComponentListBase} from '../../../ComponentListBase';
 import {GuiInteractiveExecutor} from './GuiInteractiveExecutor';
 
 import {TextEditDialogComponent} from "./TextEditDialog/textedit.dialog";
+
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'task-magic',
@@ -32,7 +35,9 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
   oldPageSize = 0;
   lastFocused = null;
   private _controlProperties: any;
+  magicProperties = MagicProperties;
 
+  static routeInfo: SubformDefinition = null;
 
   protected executeInteractiveCommand(guiIntactiveCommand: GuiInteractive)
   {
@@ -46,6 +51,7 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
 
   constructor(protected ref: ChangeDetectorRef,
               protected task: TaskMagicService,
+              protected router: Router,
               //protected magic:MagicEngine
 
   ) {
@@ -101,12 +107,25 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
       return ""
   }
 
-  addSubformComp(subformControlName: string, formName: string, taskId: string, taskDescription: any) {
-    this.subformsDict[subformControlName] = {
-      formName,
-      parameters: {myTaskId: taskId, taskDescription: taskDescription}
-    };
-    this.ref.detectChanges();
+  addSubformComp(subformControlName: string, formName: string, taskId: string, taskDescription: any, routerPath: string, inDefaultOutlet: boolean) {
+    if (isNullOrUndefined(routerPath)) {
+      this.subformsDict[subformControlName] = {
+        formName,
+        parameters: {myTaskId: taskId, taskDescription: taskDescription}
+      };
+      this.ref.detectChanges();
+    }
+    else {
+      BaseTaskMagicComponent.routeInfo = {
+        formName,
+        parameters: {myTaskId: taskId, taskDescription: taskDescription}
+      };
+
+      if (inDefaultOutlet)
+        this.router.navigate([routerPath]);
+      else
+        this.router.navigate([{ outlets: { [subformControlName]: [routerPath] }}]);
+    }
   }
 
 
@@ -172,7 +191,7 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
   ConvertValToNative(controlId: string, rowId: number, val: any): any {
 
     let properties: ControlMetadata;
-    properties = this.task.Records.list[rowId].getControlMetadata(controlId);
+    properties = this.task.Records.list[0].getControlMetadata(controlId);
 
     switch (properties.dataType) {
 
@@ -310,6 +329,10 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
     return vis ? 'visible' : 'hidden';
   }
 
+  mgGetMustInput(controlId, rowId?) {
+    let vis: Boolean = this.getProperty(controlId, HtmlProperties.MustInput, rowId);
+    return vis ? 'true' : 'false';
+  }
   /*getEnable(controlId, rowId?) {
     return this.getProperty(controlId, HtmlProperties.Enabled, rowId);
   }*/
@@ -336,6 +359,7 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
     return this.task.getProperty(controlId, HtmlProperties.SelectedValue, rowId);
   }
 
+
   mgGetPlaceholder(controlId, rowId?) {
     return this.task.getProperty(controlId, HtmlProperties.PlaceHolder, rowId);
   }
@@ -354,13 +378,45 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
     return val;
   }
 
-  mgGetListboxValues(id) {
+  mgGetItemListValues(id) {
     return this.getProperty(id, HtmlProperties.ItemsList);
   }
 
   public mgOnSelectionChanged(event: Event, idx: string) {
     let guiEvent: GuiEvent = new GuiEvent("selectionchanged", idx, 0);
-    guiEvent.Value = (<any>(event.target)).selectedIndex.toString();
+
+    if(!isNullOrUndefined(event.target)) {
+      let indexes: number[] = new Array<number>((<any>event.target).selectedOptions.length);
+      for (let i = 0; i < (<any>event.target).selectedOptions.length; i++) {
+        indexes[i] = (<HTMLOptionElement>(<any>event.target).selectedOptions[i]).index;
+      }
+      guiEvent.Value = indexes.join(',');
+    }
+    else
+      guiEvent.Value = (<any>event).value;
+
+    this.task.insertEvent(guiEvent);
+  }
+
+  public mgOnListBoxSelectionChanged(event: Event, idx: string) {
+    let guiEvent: GuiEvent = new GuiEvent("selectionchanged", idx, 0);
+
+    let selectedOptions;
+    if (!isNullOrUndefined(event.target))
+      selectedOptions = (<any>event.target).selectedOptions;
+    else
+      selectedOptions = (<any>event).source.selectedOptions.selected;
+
+    let length = selectedOptions.length;
+    let indexes: number[] = new Array<number>(length);
+
+    for (let i = 0; i < length; i++) {
+      if (!isNullOrUndefined(event.target))
+        indexes[i] = (selectedOptions[i]).index;
+      else
+        indexes[i] = (selectedOptions[i]).value;
+    }
+    guiEvent.Value = indexes;
     this.task.insertEvent(guiEvent);
   }
 
@@ -380,9 +436,9 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
       rowId = 0;
     let guiEvent: GuiEvent = new GuiEvent("selectionchanged", idx, rowId);
     if(typeof event.target === "undefined")
-      guiEvent.Value = (<any>(event)).checked ? "1" : "0";
+      guiEvent.Value = (<any>(event)).checked;
     else
-      guiEvent.Value = (<any>(event.target)).checked ? "1" : "0";
+      guiEvent.Value = (<any>(event.target)).checked;
     this.task.insertEvent(guiEvent);
   }
 
@@ -397,6 +453,18 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
   {
     this.getRowsIfNeed(e.pageIndex, e.pageSize) ;
   }
+
+  sortData(e){
+    let direction: number = 0;
+    if (e.direction === 'asc')
+      direction = 0;
+    else if (e.direction === 'desc')
+      direction = 1;
+
+    let guiEvent: GuiEvent = new GuiEvent("columnSort", e.active, direction);
+    this.task.insertEvent(guiEvent);
+  }
+
   jsonData :string
   public createData()
   {
@@ -428,11 +496,16 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
     const dialog = this.GetDialog();
     if (!this.task.getProperty(id, HtmlProperties.ReadOnly, rowId)) {
       if (dialog != null && this.task.isTableControl(id)) {
-        let v = this.task.getValue(id, rowId);
+        let dataType: StorageAttribute ;
+        dataType = this.task.Records.list[0].getControlMetadata(id).dataType;
+
+
+
+          let v = this.task.getValue(id, rowId);
         const dialogRef = dialog.open(TextEditDialogComponent, {
           width: dim.width + 'px',
           height: dim.height + 'px',
-          data: {text: v},
+          data: {text: v, type: dataType},
         });
 
         dialogRef.updatePosition({top: dim.y - 15 + "px", left: dim.x + "px"});

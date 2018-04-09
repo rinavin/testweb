@@ -191,7 +191,8 @@ export enum HtmlProperties {
   Password="password",
   TabIndex="tabindex",
   SelectedRow="selectedRow",
-  ReadOnly="readOnly"
+  ReadOnly="readOnly",
+  MustInput="mustInput"
 }
 
 export enum HtmlClasses {

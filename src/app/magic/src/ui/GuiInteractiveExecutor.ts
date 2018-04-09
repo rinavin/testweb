@@ -1,4 +1,4 @@
-import {InteractiveCommandType, GuiInteractive, Styles} from "@magic/gui";
+import {GuiInteractive, InteractiveCommandType, Styles} from "@magic/gui";
 import {BaseTaskMagicComponent} from './app.baseMagicComponent';
 import {isNullOrUndefined} from "util";
 import {TaskMagicService} from '../services/task.magics.service';
@@ -34,7 +34,7 @@ export class GuiInteractiveExecutor {
   }
 
 
-  private  onValue(): void {
+  private onValue(): void {
     let result = this.task.getFormControl("" + this.command._line, this.command.controlName);
     let val: any;
     if (!isNullOrUndefined(result)) {
@@ -42,17 +42,18 @@ export class GuiInteractiveExecutor {
     }
     else if (this.task.isTableControl(this.command.controlName))
       val = this.task.getValue(this.command.controlName, "" + this.command._line);
+
     val = this.component.ConvertValToNative(this.command.controlName, this.command._line, val);
 
     this.command._mgValue.obj = val;
   }
 
-  private  onGetRowsInPage(): void {
+  private onGetRowsInPage(): void {
     this.command._intVal1 = this.component.getPageSize();
   }
 
   private OnMessageBox() {
 
-    this.command._mgValue.number =  confirmationBox.showConfirmationBox(this.command._mgValue.title, this.command._mgValue.str, this.command._mgValue.style);
+    this.command._mgValue.number = confirmationBox.showConfirmationBox(this.command._mgValue.title, this.command._mgValue.str, this.command._mgValue.style);
   }
 }

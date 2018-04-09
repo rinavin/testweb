@@ -6,8 +6,9 @@
     text-align: right;
 }
 
-.static_multiline {
-    display: inline-block;
+.multiline {
+  word-break: break-all;
+  white-space: pre-line;
 }
 
 .edit_multiline {
@@ -22,10 +23,6 @@
 
 .thick_border {
     border: 2px solid #F00;
-}
-
-.has_border {
-    border: 1px solid;
 }
 
 .hidden_border {
@@ -91,3 +88,16 @@
 
 
 
+
+/*for matirial list box control*/
+/*hide the check box*/
+mat-list-option mat-pseudo-checkbox.mat-pseudo-checkbox{
+display: none;
+}
+
+/*for matirial list box control*/
+/* for selected item that is true the style will be by following */
+mat-list-option[aria-selected = "true"]
+{
+  background-color: blue;
+}

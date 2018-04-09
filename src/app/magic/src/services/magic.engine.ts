@@ -18,9 +18,16 @@ export class MagicEngine {
   startMagic() {
     this.magic.registerExecuteCommands(data => {
       if (!this.isStub) {
-        const list = data as GuiCommand[];
-        for (let c of list) {
-          this.refreshDom.next(c);
+        try {
+          const list = data as GuiCommand[];
+          for (let c of list) {
+            this.refreshDom.next(c);
+          }
+        }
+        catch (e) {
+          console.log('magic engine not found');
+          console.log('moving to stub mode');
+          this.isStub = true;
         }
       }
     });
@@ -38,6 +45,10 @@ export class MagicEngine {
     if (!this.isStub)
       this.magic.insertEvent(guiEvent);
 
+  }
+
+  GetControlPictureMask(taskId: string, controlName: string): string {
+    return this.magic.GetControlPictureMask(taskId, controlName);
   }
 
   saveData(data:string)

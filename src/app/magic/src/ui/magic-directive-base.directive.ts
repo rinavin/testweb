@@ -13,7 +13,7 @@ export class MagicDirectiveBase implements OnInit {
   @Input() events: any[] = [];
 
   protected htmlElement: HTMLElement;
-  private component: BaseTaskMagicComponent;
+  protected component: BaseTaskMagicComponent;
   private eventHandlers: { [key: string]: () => void; } = {};
   protected id: string;
   protected selector: string;
@@ -25,7 +25,11 @@ export class MagicDirectiveBase implements OnInit {
               private vcRef: ViewContainerRef,) {
 
     this.htmlElement = this.element.nativeElement;
-    this.component = (<any>this.vcRef)._view.component as BaseTaskMagicComponent;
+    let c = (<any>this.vcRef)._view;
+    while (!(c instanceof BaseTaskMagicComponent)) {
+      c = c.component;
+    }
+    this.component = c;
   }
 
   get task() {
@@ -58,6 +62,17 @@ export class MagicDirectiveBase implements OnInit {
 
       });
     });
+
+
+    this.htmlElement.addEventListener('change', ( e) => {
+      let guiEvent: GuiEvent = new GuiEvent("selectionchanged", this.id, this.rowId);
+
+      if ((<any>(event.target)).selectedIndex  !== undefined) {
+        guiEvent.Value = (<any>(event.target)).selectedIndex.toString();
+        this.task.insertEvent(guiEvent);
+      }
+
+    });
   }
 
   private OnFocus() {
@@ -66,8 +81,8 @@ export class MagicDirectiveBase implements OnInit {
 
   private IsSameElement(command) {
     return (command.CtrlName === this.id &&
-      command.line == this.rowId ||
-      (command.line === 0 && isNullOrUndefined(this.rowId)));
+      (command.line == this.rowId ||
+      (command.line === 0 && isNullOrUndefined(this.rowId))));
   }
   private regUpdatesUI() {
     this.task
@@ -101,7 +116,7 @@ export class MagicDirectiveBase implements OnInit {
         break;
 
       case CommandType.CREATE_SUB_FORM:
-        this.component.addSubformComp(command.CtrlName, command.userDropFormat.toString(), command.str, command.fileName);
+        this.component.addSubformComp(command.CtrlName, command.userDropFormat.toString(), command.str, command.fileName, command.contextID, command.Bool1);
         break;
 
       case CommandType.SET_FOCUS:
@@ -122,6 +137,20 @@ export class MagicDirectiveBase implements OnInit {
           this.renderer.setAttribute(this.htmlElement, command.Operation, command.str);
 
         break;
+
+      case HtmlProperties.Enabled:
+      let rowId: string = (command.line || 0).toString();
+      let controlId = command.CtrlName;
+      let c = this.task.getFormControl(rowId, controlId);
+
+      if (!isNullOrUndefined(c)) {
+        if (command.obj1)
+          c.enable();
+        else
+          c.disable();
+      }
+
+      break;
     }
   }
 }

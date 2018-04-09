@@ -5,6 +5,7 @@ import {GuiEvent} from "@magic/engine";
 import {ControlMetadata, HtmlProperties} from "../controls.metadata.model";
 import {MagicDirectiveBase} from "./magic-directive-base.directive";
 import {TaskMagicService} from "../services/task.magics.service";
+import {StylesMapManager} from "../services/StylesMapManager";
 
 @Directive({
   selector: '[magicnc]'
@@ -100,12 +101,12 @@ export class MagicNoControlDirective extends MagicDirectiveBase {
             (<HTMLInputElement>this.htmlElement).value = command.value;
           }
         }
-        
+
         if (this.htmlElement instanceof HTMLButtonElement)
         {
           (<HTMLButtonElement>this.htmlElement).innerHTML = command.value;
         }
-        
+
         break;
 
       case CommandType.SET_PROPERTY:
@@ -113,7 +114,9 @@ export class MagicNoControlDirective extends MagicDirectiveBase {
         break;
 
       case CommandType.SET_STYLE:
-        this.htmlElement.setAttribute("style", command.Operation + ":" + command.obj1);
+        let value: string = StylesMapManager.magicValueGetStyle(command.Operation, command.obj1);
+        let attribute: string = StylesMapManager.MagicPropertyToHtmlAttributeMap.get(command.Operation);
+        this.htmlElement.setAttribute("style", attribute + ":" + value);
         break;
     }
   }

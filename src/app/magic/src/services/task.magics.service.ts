@@ -6,6 +6,7 @@ import {isNullOrUndefined} from "util";
 import {Subject} from "rxjs/Subject";
 import { GuiCommand, GuiInteractive} from "@magic/gui";
 import {GuiEvent} from "@magic/engine";
+import {StylesMapManager} from "./StylesMapManager"
 
 @Injectable()
 export class TaskMagicService {
@@ -72,7 +73,7 @@ export class TaskMagicService {
   getFormControl(rowId: string, id: string): AbstractControl {
     let c: AbstractControl;
     let group: FormGroup = this.isTableControl(id) ? this.rows[rowId] : this.ScreenModeControls;
-    if (group.contains(id))
+    if (group.get(id))
       c = group.controls[id];
     return c;
   }
@@ -147,6 +148,9 @@ export class TaskMagicService {
     this.magic.insertEvent(guiEvent);
   }
 
+  GetControlPictureMask(controlName: string): string {
+    return this.magic.GetControlPictureMask(this.taskId, controlName);
+  }
 
 
   getProperty(controlId: string, prop: HtmlProperties, rowId?: string) {
@@ -191,9 +195,10 @@ export class TaskMagicService {
       rowId = "0";
     if (this.IsStub())
       return this.getStyleStub(this.Records.list[rowId], controlId, styleName);
-    else
-      return this.Records.list[rowId].getControlMetadata(controlId).stylesMap[styleName];
-
+    else {
+      let magicValue = this.Records.list[rowId].getControlMetadata(controlId).stylesMap[styleName];
+      return StylesMapManager.magicValueGetStyle(styleName, magicValue);
+    }
   }
 
   getValue(controlId: string, rowId?: string) {
