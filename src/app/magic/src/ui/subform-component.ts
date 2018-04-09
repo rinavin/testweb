@@ -9,8 +9,10 @@ import {BaseTaskMagicComponent} from "./app.baseMagicComponent";
   selector: 'm-subform',
   providers: [TaskMagicService],
   template:    `
-    <ndc-dynamic [magic]='mysubform1' [ndcDynamicComponent]="Component" [ndcDynamicInputs]="Parameters">
-  </ndc-dynamic>
+    
+    
+    <ndc-dynamic [magic]='controlId' class="controlId" [ndcDynamicComponent]="Component" [ndcDynamicInputs]="Parameters">
+    </ndc-dynamic>
 `
 })
 
@@ -19,19 +21,18 @@ export class Subform {
 
   @Input() controlId: string;
 
+
   component: BaseTaskMagicComponent;
 
   constructor(private vcRef: ViewContainerRef) {
     this.component = (<any>this.vcRef)._view.component as BaseTaskMagicComponent;
   }
 
-  get Component() : Component
-  {
+  get Component(): Component {
     return this.component.mgGetComp(this.controlId);
   }
 
-  get Parameters() : any
-  {
+  get Parameters(): any {
     return this.component.mgGetParameters(this.controlId);
   }
 }
