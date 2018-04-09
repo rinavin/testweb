@@ -4,21 +4,32 @@ import {MagicEngine} from "./src/services/magic.engine";
 import {MagicFullControlDirective} from "./src/ui/magic-fullcontrol-directive.directive";
 import {MagicNoControlDirective} from "./src/ui/magic-nocontrol-directive.directive";
 import {MagicDefaultValueAccessor, MagicFormControlNameDirective} from "./src/ui/magic.form-control-name.directive";
-import {MagicModalComponent} from "./src/ui/magic-modal/magic-modal.component";
+import {MagicModalWindow} from "./src/ui/magic-modal/magic-modal-window";
+import {MagicRouterContainer} from './src/ui/MagicRouterContainer';
 
 import {DynamicModule} from 'ng-dynamic-component';
 
 import {ComponentsList} from '../ComponentList';
 import {ThemeModule} from './src/ui/theme/theme.module';
+import {AlphaDirective} from './src/ui/magic-alpha-directive.directive';
+import {DateFormatPipe} from './src/ui/magic-datetransform-pipe';
+import {TimeFormatPipe} from './src/ui/magic-timetransform-pipe';
+import {Subform} from './src/ui/subform-component';
+
 const comps = ComponentsList.getAllComponents();
+
 
 const decs = [
   MagicFullControlDirective,
   MagicNoControlDirective,
   MagicDefaultValueAccessor,
   MagicFormControlNameDirective,
-  MagicModalComponent,
-
+  MagicModalWindow,
+  AlphaDirective,
+  DateFormatPipe,
+  TimeFormatPipe,
+  MagicRouterContainer,
+  Subform
 
 ];
 
@@ -28,7 +39,7 @@ const decs = [
   imports: [
     CommonModule,
     ThemeModule,
-    DynamicModule.withComponents([MagicModalComponent])
+    DynamicModule.withComponents([MagicModalWindow])
   ],
   entryComponents: [  comps]
 })
