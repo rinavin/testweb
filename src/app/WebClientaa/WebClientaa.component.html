@@ -1,0 +1,95 @@
+<form
+    novalidate
+    [formGroup]="screenFormGroup"
+>
+    <div
+        magic="WebClientaa"
+        class="WebClientaaProps"
+    >
+        <div class="example-container mat-elevation-z8 Table11534337TableContainerProps">
+            <mat-table
+                #table
+                [dataSource]="dataSource"
+                class="Table11534337Props"
+                matSort
+                matSortDisableClear
+                (matSortChange)="sortData($event)"
+            >
+                <ng-container
+                    magic="a"
+                    matColumnDef="a"
+                >
+                    <mat-header-cell *matHeaderCellDef> a </mat-header-cell>
+                    <mat-cell
+                        *matCellDef="let row"
+                        magicMark="magicTableRowContainer"
+                    >
+                        <label
+                            magic="a"
+                            [rowId]="row.rowId"
+                            class="aProps hidden_border"
+                        >
+                            {{mgGetValue('a', row.rowId) }}
+                            </label>
+                            </mat-cell>
+                            </ng-container>
+                            <ng-container
+                                magic="b"
+                                matColumnDef="b"
+                            >
+                                <mat-header-cell *matHeaderCellDef> b </mat-header-cell>
+                                <mat-cell
+                                    *matCellDef="let row"
+                                    magicMark="magicTableRowContainer"
+                                >
+                                    <label
+                                        magic="b"
+                                        [rowId]="row.rowId"
+                                        class="bProps hidden_border"
+                                    >
+                                        {{mgGetValue('b', row.rowId) }}
+                                        </label>
+                                        </mat-cell>
+                                        </ng-container>
+                                        <ng-container
+                                            magic="log"
+                                            matColumnDef="log"
+                                        >
+                                            <mat-header-cell *matHeaderCellDef> log </mat-header-cell>
+                                            <mat-cell
+                                                *matCellDef="let row"
+                                                magicMark="magicTableRowContainer"
+                                            >
+                                                <mat-checkbox
+                                                    magic="log"
+                                                    [rowId]="row.rowId"
+                                                    class="logProps"
+                                                    formControlName="log"
+                                                    (change)="mgOnCheckChanged($event,'log', row.rowId)"
+                                                >
+                                                    </mat-checkbox>
+                                                    </mat-cell>
+                                                    </ng-container>
+                                                    <mat-header-row
+                                                        *matHeaderRowDef="displayedColumns"
+                                                        class="Table11534337_table_headerRowProps"
+                                                    ></mat-header-row>
+                                                        <mat-row
+                                                            *matRowDef="let row; columns: displayedColumns;"
+                                                            class="Table11534337_table_rowProps"
+                                                            [ngClass]="{ 'selected': selection.isSelected(row)}"
+                                                            magicMark="magicTableRowContainer"
+                                                            (click)="selectRow(row.rowId)"
+                                                        >
+                                                            </mat-row>
+                                                            </mat-table>
+                                                            <mat-paginator
+                                                                #paginator
+                                                                [pageSize]="10"
+                                                                [pageSizeOptions]="[5, 10, 20]"
+                                                                (page)="pageEvent = $event; mgOnPaginateChange($event)"
+                                                            >
+                                                                </mat-paginator>
+        </div>
+        </div>
+        </form>

@@ -1,0 +1,41 @@
+/*this is a component css*/
+
+.WebClientaaProps {
+    background-repeat: repeat;
+}
+
+.Table11534337TableContainerProps {}
+
+.Table11534337Props {
+    height: 800px;
+    overflow-y: scroll;
+    border: lightskyblue solid 1px;
+}
+
+.Table11534337_table_rowProps {}
+
+.Table11534337_table_rowProps:hover {
+    background-color: #EEEEEE;
+}
+
+.selected {
+    background: #F5F5F5;
+}
+
+.aProps {}
+
+.mat-column-a {}
+
+.aProps {}
+
+.bProps {}
+
+.mat-column-b {}
+
+.bProps {}
+
+.logProps {}
+
+.mat-column-log {}
+
+.logProps {}
