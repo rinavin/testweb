@@ -15,14 +15,17 @@ import {AlphaDirective} from './src/ui/magic-alpha-directive.directive';
 import {DateFormatPipe} from './src/ui/magic-datetransform-pipe';
 import {TimeFormatPipe} from './src/ui/magic-timetransform-pipe';
 import {Subform} from './src/ui/subform-component';
-import {MagicCheckboxDirective} from './src/ui/magic-checkbox.directive';
+import {MagicCheckboxDirective, MatCheckboxDirective} from './src/ui/magic-checkbox.directive';
 
 const comps = ComponentsList.getAllComponents();
 
 
 const decs = [
   MagicFullControlDirective,
+
   MagicCheckboxDirective,
+  MatCheckboxDirective,
+
   MagicNoControlDirective,
   MagicDefaultValueAccessor,
   MagicFormControlNameDirective,
