@@ -1,0 +1,35 @@
+<form
+    novalidate
+    [formGroup]="screenFormGroup"
+>
+    <div
+        magic="SubA1"
+        class="SubA1Props"
+    >
+        <label
+            magic="Label2"
+            class="Label2Props"
+        >
+            {{mgGetText('Label2')}}
+            </label>
+            <mat-form-field class="subA1_v1Props">
+                <div>
+                    <input
+                        matInput
+                        magic="subA1_v1"
+                        formControlName="subA1_v1"
+                        pattern="^.{0,10}$"
+                    >
+                        <div *ngIf="(screenFormGroup.get('subA1_v1').touched) && (screenFormGroup.get('subA1_v1').hasError('pattern')
+          )">
+                            <p>control status: {{ screenFormGroup.get('subA1_v1').errors | json }}</p>
+                        </div>
+                </div>
+                <!--
+            <button mat-button *ngIf="value" mdSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+            </button>
+    -->
+            </mat-form-field>
+            </div>
+            </form>

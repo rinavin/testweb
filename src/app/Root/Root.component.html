@@ -1,0 +1,74 @@
+<form
+    novalidate
+    [formGroup]="screenFormGroup"
+>
+    <div
+        magic="Root"
+        class="RootProps"
+    >
+        <label
+            magic="label1"
+            class="label1Props"
+        >
+            {{mgGetText('label1')}}
+            </label>
+            <mat-form-field class="root_v1Props">
+                <div>
+                    <input
+                        matInput
+                        magic="root_v1"
+                        formControlName="root_v1"
+                        pattern="^.{0,5}$"
+                    >
+                        <div *ngIf="(screenFormGroup.get('root_v1').touched) && (screenFormGroup.get('root_v1').hasError('pattern')
+          )">
+                            <p>control status: {{ screenFormGroup.get('root_v1').errors | json }}</p>
+                        </div>
+                </div>
+                <!--
+            <button mat-button *ngIf="value" mdSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+            </button>
+    -->
+            </mat-form-field>
+            <button
+                mat-raised-button
+                color="primary"
+                magic="Button4"
+                class="Button4Props"
+            >
+                Button4
+                </button>
+                <button
+                    mat-raised-button
+                    color="primary"
+                    magic="Button5"
+                    class="Button5Props"
+                >
+                    Button5
+                    </button>
+                    <button
+                        mat-raised-button
+                        color="primary"
+                        magic="Button7"
+                        class="Button7Props"
+                    >
+                        Button7
+                        </button>
+                        <div class="Subform3Props">
+                            <router-outlet
+                                magic="Subform3"
+                                class="Subform3Props"
+                                name="Subform3"
+                            >
+                                </router-outlet>
+                        </div>
+                        <div class="RouterOutlet1Props">
+                            <router-outlet
+                                magic="RouterOutlet1"
+                                class="RouterOutlet1Props"
+                            >
+                                </router-outlet>
+                        </div>
+                        </div>
+                        </form>
