@@ -19,6 +19,8 @@ import { A_A } from "./A/A.component";
 
 import { A_SubA1_SubA1 } from "./A/SubA1/SubA1.component";
 
+import { WebClientaa_WebClientaa } from "./WebClientaa/WebClientaa.component";
+
 export class ComponentsList extends ComponentListBase {
 	static compHash: { [x: string]: any } = {
 		web_web: web_web.web,
@@ -37,7 +39,9 @@ export class ComponentsList extends ComponentListBase {
 
 		A_A: A_A.A,
 
-		A_SubA1_SubA1: A_SubA1_SubA1.SubA1
+		A_SubA1_SubA1: A_SubA1_SubA1.SubA1,
+
+		WebClientaa_WebClientaa: WebClientaa_WebClientaa.WebClientaa
 	};
 
 	static ComponentArray: any[] = [
@@ -57,7 +61,9 @@ export class ComponentsList extends ComponentListBase {
 
 		A_A.A,
 
-		A_SubA1_SubA1.SubA1
+		A_SubA1_SubA1.SubA1,
+
+		WebClientaa_WebClientaa.WebClientaa
 	];
 
 	static getArray() {
