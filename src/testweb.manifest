@@ -44,6 +44,11 @@
       "path": "A/SubA1/",
       "name": "SubA1",
       "uniqueName": "A_SubA1_SubA1"
+    },
+    {
+      "path": "WebClientaa/",
+      "name": "WebClientaa",
+      "uniqueName": "WebClientaa_WebClientaa"
     }
   ]
 }
