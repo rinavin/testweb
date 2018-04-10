@@ -13,6 +13,12 @@ import { router_caled_caled } from "./router/caled/caled.component";
 
 import { router_call_call } from "./router/call/call.component";
 
+import { Root_Root } from "./Root/Root.component";
+
+import { A_A } from "./A/A.component";
+
+import { A_SubA1_SubA1 } from "./A/SubA1/SubA1.component";
+
 export class ComponentsList extends ComponentListBase {
 	static compHash: { [x: string]: any } = {
 		web_web: web_web.web,
@@ -25,7 +31,13 @@ export class ComponentsList extends ComponentListBase {
 
 		caled_caled: router_caled_caled.caled,
 
-		call_call: router_call_call.call
+		call_call: router_call_call.call,
+
+		Root_Root: Root_Root.Root,
+
+		A_A: A_A.A,
+
+		A_SubA1_SubA1: A_SubA1_SubA1.SubA1
 	};
 
 	static ComponentArray: any[] = [
@@ -39,7 +51,13 @@ export class ComponentsList extends ComponentListBase {
 
 		router_caled_caled.caled,
 
-		router_call_call.call
+		router_call_call.call,
+
+		Root_Root.Root,
+
+		A_A.A,
+
+		A_SubA1_SubA1.SubA1
 	];
 
 	static getArray() {

@@ -19,37 +19,37 @@
                 {{mgGetText('Label2')}}
                 </label>
                 <div>
-                    <select
+                    <mat-selection-list
                         multiple
-                        (change)="mgOnListBoxSelectionChanged($event,'ListBox')"
+                        (selectionChange)="mgOnListBoxSelectionChanged($event,'ListBox')"
+                        formControlName="ListBox"
                         magic="ListBox"
                         class="ListBoxProps"
-                        formControlName="ListBox"
                     >
-                        <option
+                        <mat-list-option
                             *ngFor="let o of mgGetItemListValues('ListBox');"
                             [value]="o.index"
                         >
                             {{o.realString}}
-                            </option>
-                            </select>
+                            </mat-list-option>
+                            </mat-selection-list>
                 </div>
                 <div>
-                    <select
-                        (change)="mgOnSelectionChanged($event,'ComboBox')"
-                        value="mgGetSelectedValue('ComboBox')"
-                        magic="ComboBox"
-                        class="ComboBoxProps"
-                        formControlName="ComboBox"
-                    >
-                        <option
-                            *ngFor="let o of mgGetItemListValues('ComboBox');"
-                            [selected]="o.index == mgGetSelectedValue('ComboBox')"
-                            [value]="o.index"
+                    <mat-form-field class="ComboBoxProps">
+                        <mat-select
+                            (selectionChange)="mgOnSelectionChanged($event,'ComboBox')"
+                            [value]="mgGetSelectedValue('ComboBox')"
+                            magic="ComboBox"
+                            formControlName="ComboBox"
                         >
-                            {{o.realString}}
-                            </option>
-                            </select>
+                            <mat-option
+                                *ngFor="let o of mgGetItemListValues('ComboBox');"
+                                [value]="o.index"
+                            >
+                                {{o.realString}}
+                                </mat-option>
+                                </mat-select>
+                    </mat-form-field>
                 </div>
                 <div
                     magic="radio"

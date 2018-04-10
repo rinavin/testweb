@@ -29,6 +29,21 @@
       "path": "router/call/",
       "name": "call",
       "uniqueName": "call_call"
+    },
+    {
+      "path": "Root/",
+      "name": "Root",
+      "uniqueName": "Root_Root"
+    },
+    {
+      "path": "A/",
+      "name": "A",
+      "uniqueName": "A_A"
+    },
+    {
+      "path": "A/SubA1/",
+      "name": "SubA1",
+      "uniqueName": "A_SubA1_SubA1"
     }
   ]
 }

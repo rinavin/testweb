@@ -10,26 +10,34 @@
             magic="Label11534338"
             class="Label11534338Props"
         >
-            call:
+            {{mgGetText('Label11534338')}}
             </label>
-            <div>
-                <input
-                    type="text"
-                    formControlName="call"
-                    magic="call"
-                    class="callProps"
-                    pattern="^.{0,10}$"
-                />
-                <div *ngIf="(screenFormGroup.get('call').touched) && (screenFormGroup.get('call').hasError('pattern')
-                    )">
-                    <p>control status: {{ screenFormGroup.get('call').errors | json }}</p>
+            <mat-form-field class="callProps">
+                <div>
+                    <input
+                        matInput
+                        magic="call"
+                        formControlName="call"
+                        pattern="^.{0,10}$"
+                    >
+                        <div *ngIf="(screenFormGroup.get('call').touched) && (screenFormGroup.get('call').hasError('pattern')
+          )">
+                            <p>control status: {{ screenFormGroup.get('call').errors | json }}</p>
+                        </div>
                 </div>
-            </div>
+                <!--
+            <button mat-button *ngIf="value" mdSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+            </button>
+    -->
+            </mat-form-field>
             <button
+                mat-raised-button
+                color="primary"
                 magic="Button11534339"
                 class="Button11534339Props"
             >
-                {{mgGetValue('Button11534339')}}
+                Button11534339
                 </button>
                 <div class="Subform11534340Props">
                     <m-subform
