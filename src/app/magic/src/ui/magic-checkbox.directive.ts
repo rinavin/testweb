@@ -8,19 +8,11 @@ import {MagicDirectiveBase} from './magic-directive-base.directive';
  // selector: 'input[type=checkbox][magic]'
 })
 export class MagicCheckboxDirective extends MagicFullControlDirective {
-  /*// CTOR
-  constructor(element: ElementRef,
-              renderer: Renderer2,
-              _task: TaskMagicService,
-              vcRef: ViewContainerRef) {
-    super(element, renderer, _task, vcRef);
-    console.log('MagicCheckboxDirective');
-  }*/
-
   @HostListener('change', ['$event'])
   onChange($event) {
     console.log('MagicCheckboxDirective mgOnCheckChanged');
-    this.component.mgOnCheckChanged($event, this.id, +this.rowId);
+    //TODO: use this insted of explicite handler in generated code
+    //this.component.mgOnCheckChanged($event, this.id, +this.rowId);
   }
 
 }

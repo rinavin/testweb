@@ -60,36 +60,39 @@
                                                 *matCellDef="let row"
                                                 magicMark="magicTableRowContainer"
                                             >
-                                                <mat-checkbox
-                                                    magic="log"
-                                                    [rowId]="row.rowId"
-                                                    class="logProps"
-                                                    formControlName="log"
-                                                    (change)="mgOnCheckChanged($event,'log', row.rowId)"
-                                                >
-                                                    </mat-checkbox>
-                                                    </mat-cell>
-                                                    </ng-container>
-                                                    <mat-header-row
-                                                        *matHeaderRowDef="displayedColumns"
-                                                        class="Table11534337_table_headerRowProps"
-                                                    ></mat-header-row>
-                                                        <mat-row
-                                                            *matRowDef="let row; columns: displayedColumns;"
-                                                            class="Table11534337_table_rowProps"
-                                                            [ngClass]="{ 'selected': selection.isSelected(row)}"
-                                                            magicMark="magicTableRowContainer"
-                                                            (click)="selectRow(row.rowId)"
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="log"
+                                                        formControlName="log"
+                                                        magic="log"
+                                                        [rowId]="row.rowId"
+                                                        class="logProps"
+                                                        (change)="mgOnCheckChanged($event,'log', row.rowId)"
+                                                    />
+                                                </div>
+                                                </mat-cell>
+                                                </ng-container>
+                                                <mat-header-row
+                                                    *matHeaderRowDef="displayedColumns"
+                                                    class="Table11534337_table_headerRowProps"
+                                                ></mat-header-row>
+                                                    <mat-row
+                                                        *matRowDef="let row; columns: displayedColumns;"
+                                                        class="Table11534337_table_rowProps"
+                                                        [ngClass]="{ 'selected': selection.isSelected(row)}"
+                                                        magicMark="magicTableRowContainer"
+                                                        (click)="selectRow(row.rowId)"
+                                                    >
+                                                        </mat-row>
+                                                        </mat-table>
+                                                        <mat-paginator
+                                                            #paginator
+                                                            [pageSize]="10"
+                                                            [pageSizeOptions]="[5, 10, 20]"
+                                                            (page)="pageEvent = $event; mgOnPaginateChange($event)"
                                                         >
-                                                            </mat-row>
-                                                            </mat-table>
-                                                            <mat-paginator
-                                                                #paginator
-                                                                [pageSize]="10"
-                                                                [pageSizeOptions]="[5, 10, 20]"
-                                                                (page)="pageEvent = $event; mgOnPaginateChange($event)"
-                                                            >
-                                                                </mat-paginator>
+                                                            </mat-paginator>
         </div>
         </div>
         </form>

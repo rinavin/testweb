@@ -10,40 +10,48 @@
             magic="Label11534339"
             class="Label11534339Props"
         >
-            {{mgGetText('Label11534339')}}
+            a:
             </label>
-            <mat-form-field class="aProps">
-                <div>
-                    <input
-                        matInput
-                        magic="a"
-                        formControlName="a"
-                        pattern="^.{0,10}$"
-                    >
-                        <div *ngIf="(screenFormGroup.get('a').touched) && (screenFormGroup.get('a').hasError('pattern')
-          )">
-                            <p>control status: {{ screenFormGroup.get('a').errors | json }}</p>
-                        </div>
+            <div>
+                <input
+                    type="text"
+                    formControlName="a"
+                    magic="a"
+                    class="aProps"
+                    pattern="^.{0,10}$"
+                />
+                <div *ngIf="(screenFormGroup.get('a').touched) && (
+                        screenFormGroup.get('a').hasError('pattern')
+                        
+                        )">
+                    <p>control status: {{ screenFormGroup.get('a').errors | json }}</p>
                 </div>
-                <!--
-            <button mat-button *ngIf="value" mdSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-                <mat-icon>close</mat-icon>
-            </button>
-    -->
-            </mat-form-field>
+            </div>
             <label
                 magic="Label11534340"
                 class="Label11534340Props"
             >
                 {{mgGetText('Label11534340')}}
                 </label>
-                <mat-checkbox
-                    magic="b"
-                    class="bProps"
-                    formControlName="b"
-
-                >
-                    {{mgGetText('b')}}
-                    </mat-checkbox>
-                    </div>
-                    </form>
+                <div>
+                    <div
+                        magic="b"
+                        class="bProps"
+                    >
+                        <input
+                            type="checkbox"
+                            id="b"
+                            formControlName="b"
+                            (change)="mgOnCheckChanged($event,'b')"
+                        />
+                        <label for="b">
+        
+        
+        bbbb
+        
+        
+    </label>
+                </div>
+                </div>
+                </div>
+                </form>

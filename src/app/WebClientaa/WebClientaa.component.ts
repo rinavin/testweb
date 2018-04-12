@@ -13,7 +13,7 @@ import {
 import { SelectionModel } from "@angular/cdk/collections";
 import { ViewChild } from "@angular/core";
 import { ChangeDetectorRef } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 
 export namespace WebClientaa_WebClientaa {
 	@Component({
@@ -30,9 +30,10 @@ export namespace WebClientaa_WebClientaa {
 			public dialog: MatDialog,
 			protected ref: ChangeDetectorRef,
 			protected task: TaskMagicService,
-			protected router: Router
+			protected router: Router,
+			protected activatedRoute: ActivatedRoute
 		) {
-			super(ref, task, router);
+			super(ref, task, router, activatedRoute);
 		}
 		dataSource = new MatTableDataSource<Element>(this.task.Records.list);
 		selection = new SelectionModel<Element>(false, []);

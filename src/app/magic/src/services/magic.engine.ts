@@ -47,10 +47,22 @@ export class MagicEngine {
 
   }
 
+  GetRangedValue(taskId: string, controlName: string, value: string): string {
+    return this.magic.GetRangedValue(taskId, controlName, value);
+  }
+
   GetControlPictureMask(taskId: string, controlName: string): string {
     return this.magic.GetControlPictureMask(taskId, controlName);
   }
 
+  ValidateControlValue(taskId: string, controlName: string, value: any): string {
+    return this.magic.ValidateControlValue(taskId, controlName, value);
+  }
+
+  GetFldRanges(taskId: string, controlName: string): string {
+    return this.magic.GetFldRanges(taskId, controlName);
+  }
+  
   saveData(data:string)
   {
     //this.magic.saveData(data);

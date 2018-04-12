@@ -10,34 +10,28 @@
             magic="Label2"
             class="Label2Props"
         >
-            {{mgGetText('Label2')}}
+            A_v1:
             </label>
-            <mat-form-field class="A_v1Props">
-                <div>
-                    <input
-                        matInput
-                        magic="A_v1"
-                        formControlName="A_v1"
-                        pattern="^.{0,10}$"
-                    >
-                        <div *ngIf="(screenFormGroup.get('A_v1').touched) && (screenFormGroup.get('A_v1').hasError('pattern')
-          )">
-                            <p>control status: {{ screenFormGroup.get('A_v1').errors | json }}</p>
-                        </div>
+            <div>
+                <input
+                    type="text"
+                    formControlName="A_v1"
+                    magic="A_v1"
+                    class="A_v1Props"
+                    pattern="^.{0,10}$"
+                />
+                <div *ngIf="(screenFormGroup.get('A_v1').touched) && (
+                        screenFormGroup.get('A_v1').hasError('pattern')
+                        
+                        )">
+                    <p>control status: {{ screenFormGroup.get('A_v1').errors | json }}</p>
                 </div>
-                <!--
-            <button mat-button *ngIf="value" mdSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-                <mat-icon>close</mat-icon>
-            </button>
-    -->
-            </mat-form-field>
+            </div>
             <button
-                mat-raised-button
-                color="primary"
                 magic="Button4"
                 class="Button4Props"
             >
-                Button4
+                {{mgGetValue('Button4')}}
                 </button>
                 <div class="Subform3Props">
                     <m-subform

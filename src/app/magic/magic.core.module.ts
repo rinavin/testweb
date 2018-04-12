@@ -6,14 +6,15 @@ import {MagicNoControlDirective} from "./src/ui/magic-nocontrol-directive.direct
 import {MagicDefaultValueAccessor, MagicFormControlNameDirective} from "./src/ui/magic.form-control-name.directive";
 import {MagicModalWindow} from "./src/ui/magic-modal/magic-modal-window";
 import {MagicRouterContainer} from './src/ui/MagicRouterContainer';
-
 import {DynamicModule} from 'ng-dynamic-component';
 
 import {ComponentsList} from '../ComponentList';
 import {ThemeModule} from './src/ui/theme/theme.module';
 import {AlphaDirective} from './src/ui/magic-alpha-directive.directive';
+import {BooleanDirective} from './src/ui/magic-boolean-directive.directive';
 import {DateFormatPipe} from './src/ui/magic-datetransform-pipe';
 import {TimeFormatPipe} from './src/ui/magic-timetransform-pipe';
+import {RangeValidator} from './src/ui/magic-range-validator.directive';
 import {Subform} from './src/ui/subform-component';
 import {MagicCheckboxDirective, MatCheckboxDirective} from './src/ui/magic-checkbox.directive';
 
@@ -31,11 +32,12 @@ const decs = [
   MagicFormControlNameDirective,
   MagicModalWindow,
   AlphaDirective,
+  BooleanDirective,
   DateFormatPipe,
   TimeFormatPipe,
+  RangeValidator,
   MagicRouterContainer,
   Subform
-
 ];
 
 @NgModule({

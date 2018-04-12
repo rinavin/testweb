@@ -19,7 +19,7 @@ import {GuiInteractiveExecutor} from './GuiInteractiveExecutor';
 
 import {TextEditDialogComponent} from "./TextEditDialog/textedit.dialog";
 
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'task-magic',
@@ -52,6 +52,7 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
   constructor(protected ref: ChangeDetectorRef,
               protected task: TaskMagicService,
               protected router: Router,
+              protected activatedRoute: ActivatedRoute
               //protected magic:MagicEngine
 
   ) {
@@ -122,9 +123,9 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
       };
 
       if (inDefaultOutlet)
-        this.router.navigate([routerPath]);
+        this.router.navigate([routerPath], {relativeTo: this.activatedRoute});
       else
-        this.router.navigate([{ outlets: { [subformControlName]: [routerPath] }}]);
+        this.router.navigate([{ outlets: { [subformControlName]: [routerPath] }}], {relativeTo: this.activatedRoute});
     }
   }
 
@@ -197,8 +198,12 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
 
       case StorageAttribute.BOOLEAN: {
         let val1: boolean;
-        if (typeof val === 'string')
-          return NString.Equals(val, 'true', true) ? true : false;
+        if (typeof val === 'string') {
+          let ranges: string = this.task.GetFldRanges(controlId);
+          let found: number = ranges.indexOf(',');
+          let trueOption: string = ranges.substr(0, found);
+          return NString.Equals(val, trueOption, true);
+        }
         else
           return val;
       }
