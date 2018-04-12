@@ -13,7 +13,7 @@ export class MagicDirectiveBase implements OnInit {
   @Input() events: any[] = [];
 
   protected htmlElement: HTMLElement;
-  protected component: BaseTaskMagicComponent;
+  private component: BaseTaskMagicComponent;
   private eventHandlers: { [key: string]: () => void; } = {};
   protected id: string;
   protected selector: string;
