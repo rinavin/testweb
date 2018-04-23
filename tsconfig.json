@@ -13,11 +13,12 @@
       "node_modules/@types"
     ],
     "paths": {
-      "@magic/mscorelib": ["../@magic/mscorelib"],
-      "@magic/utils":     ["../@magic/utils"    ],
-      "@magic/gui":       ["../@magic/gui"      ],
-      "@magic/engine":    ["../@magic/engine"   ]
+      "@magic/mscorelib": ["D:/xpa_tfs/magicxpaproject/_Trunk/Sources/Webclient/@magic/mscorelib"],
+      "@magic/utils":     ["D:/xpa_tfs/magicxpaproject/_Trunk/Sources/Webclient/@magic/utils"    ],
+      "@magic/gui":       ["D:/xpa_tfs/magicxpaproject/_Trunk/Sources/Webclient/@magic/gui"      ],
+      "@magic/engine":    ["D:/xpa_tfs/magicxpaproject/_Trunk/Sources/Webclient/@magic/engine"   ]
     },
+
     "lib": [
       "es2017",
       "dom"
