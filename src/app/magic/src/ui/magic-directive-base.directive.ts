@@ -116,7 +116,7 @@ export class MagicDirectiveBase implements OnInit {
         break;
 
       case CommandType.CREATE_SUB_FORM:
-        this.component.addSubformComp(command.CtrlName, command.userDropFormat.toString(), command.str, command.fileName, command.contextID, command.Bool1);
+        this.component.addSubformComp(command.CtrlName, command.userDropFormat.toString(), command.str, command.fileName, command.contextID, command.params, command.Bool1);
         break;
 
       case CommandType.SET_FOCUS:

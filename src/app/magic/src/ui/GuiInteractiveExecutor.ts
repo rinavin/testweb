@@ -24,6 +24,9 @@ export class GuiInteractiveExecutor {
         case InteractiveCommandType.MESSAGE_BOX:
           this.OnMessageBox();
           break;
+        case InteractiveCommandType.GET_TOP_INDEX:
+          this.OnGetTopIndex();
+          break;
       }
     }
 
@@ -55,5 +58,9 @@ export class GuiInteractiveExecutor {
   private OnMessageBox() {
 
     this.command._mgValue.number = confirmationBox.showConfirmationBox(this.command._mgValue.title, this.command._mgValue.str, this.command._mgValue.style);
+  }
+
+  private OnGetTopIndex() : void {
+    this.command._intVal1 = this.component.GetGuiTopIndex();
   }
 }

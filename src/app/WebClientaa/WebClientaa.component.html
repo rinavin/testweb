@@ -3,6 +3,7 @@
     [formGroup]="screenFormGroup"
 >
     <div
+        style="display: flex; flex-direction: column"
         magic="WebClientaa"
         class="WebClientaaProps"
     >
@@ -63,7 +64,7 @@
                                                 <div>
                                                     <input
                                                         type="checkbox"
-                                                        id="log"
+                                                        id="log_{{row.rowId}}"
                                                         formControlName="log"
                                                         magic="log"
                                                         [rowId]="row.rowId"

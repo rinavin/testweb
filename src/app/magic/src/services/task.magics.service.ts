@@ -19,7 +19,7 @@ export class TaskMagicService {
   protected template: { [id: string]: string; };
 
   constructor(protected magic: MagicEngine) {
-
+    this.Records.setGuiTopIndex(0);
   }
 
   _taskId: string;
@@ -217,9 +217,8 @@ export class TaskMagicService {
   getValue(controlId: string, rowId?: string) {
     if (isNullOrUndefined(rowId))
       rowId = '0';
+    return this.Records.list.length > +rowId ?  this.Records.list[rowId].values[controlId] : "";
 
-    return this.Records.list[rowId].values[controlId];
-    // return this.Records.list[rowId].getValue(controlId);
   }
 
   setValue(controlId: string, rowId: string, value: any): void {
@@ -251,5 +250,9 @@ export class TaskMagicService {
 
   }
 
+  getTopIndex():number
+  {
+    return this.Records.getGuiTopIndex();
+  }
 }
 

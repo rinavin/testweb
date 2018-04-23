@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/filter';
 import {StorageAttribute} from "@magic/utils";
-import {NString} from "@magic/mscorelib";
+import {NString, List} from "@magic/mscorelib";
 import { MagicProperties } from "@magic/utils";
 
 
@@ -105,10 +105,10 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
       return this.subformsDict[subformName].parameters;
     }
     else
-      return ""
+      return "";
   }
 
-  addSubformComp(subformControlName: string, formName: string, taskId: string, taskDescription: any, routerPath: string, inDefaultOutlet: boolean) {
+  addSubformComp(subformControlName: string, formName: string, taskId: string, taskDescription: any, routerPath: string, params: List<any>, inDefaultOutlet: boolean) {
     if (isNullOrUndefined(routerPath)) {
       this.subformsDict[subformControlName] = {
         formName,
@@ -122,10 +122,15 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
         parameters: {myTaskId: taskId, taskDescription: taskDescription}
       };
 
+      let routeParams: List<any> = new List();
+      routeParams.push(routerPath);
+      if (params !== null) {
+        routeParams = <List<any>>routeParams.concat(params);
+      }
       if (inDefaultOutlet)
-        this.router.navigate([routerPath], {relativeTo: this.activatedRoute});
+        this.router.navigate(routeParams, {relativeTo: this.activatedRoute});
       else
-        this.router.navigate([{ outlets: { [subformControlName]: [routerPath] }}], {relativeTo: this.activatedRoute});
+        this.router.navigate([{ outlets: { [subformControlName]: routeParams }}], {relativeTo: this.activatedRoute});
     }
   }
 
@@ -172,15 +177,11 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
     }
     if (!this.task.Records.includesLast) {
       let guiEvent: GuiEvent = new GuiEvent("getRows", "table", 0);
-      for (let i = pageIndex * pageSize ; i < pageSize  * ( pageIndex + 1)  ; i++) {
-        if (!this.task.Records.isRowCreated(i)) {
-          guiEvent.Line = i;
-          this.task.insertEvent(guiEvent);
-          break;
-        }
-      }
+      guiEvent.Line = pageIndex * pageSize;
+      this.task.insertEvent(guiEvent);
     }
   }
+
   onScrollDown() {
     if (!this.task.Records.includesLast){
       let guiEvent: GuiEvent = new GuiEvent("getRows", "table", 0)
@@ -213,7 +214,11 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
     }
   }
 
-  executeCommand(command: GuiCommand): void {
+  GetGuiTopIndex() : number {
+    return this.task.getTopIndex();
+  }
+
+executeCommand(command: GuiCommand): void {
     let rowId: string = (command.line || 0).toString();
     let controlId = command.CtrlName;
 
@@ -303,9 +308,9 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
 
   mgGetTabpageText(controlId, layer) {
     const items = this.task.getProperty(controlId, HtmlProperties.ItemsList);
-    if(typeof items !== "string")
-      return items[layer-1].realString;
-    return items;
+    if(typeof items !== "undefined")
+      return items[layer].realString;
+    return "";
   }
 
   mgGetImage(controlId, rowId?) {
@@ -427,7 +432,7 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
 
   public mgOnTabSelectionChanged(idx:string, layer: number) {
     let guiEvent: GuiEvent = new GuiEvent("selectionchanged", idx, 0);
-    guiEvent.Value = (layer-1).toString();
+    guiEvent.Value = layer.toString();
     this.task.insertEvent(guiEvent);
   }
 

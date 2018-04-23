@@ -1,69 +1,87 @@
 import { ComponentListBase } from "./ComponentListBase";
 import { Component } from "@angular/core";
 
-import { web_web } from "./web/web.component";
+import { caled as caled_caled } from "./router/caled/caled.component";
 
-import { aaa_web1 } from "./aaa/web1.component";
+import { call as call_call } from "./router/call/call.component";
 
-import { checkbox_checkbox } from "./checkbox/checkbox.component";
+import { Root as Root_Root } from "./router/Root/Root.component";
 
-import { WEBListBox1_WEBListBox1 } from "./WEBListBox1/WEBListBox1.component";
+import { A as A_A } from "./router/A/A.component";
 
-import { router_caled_caled } from "./router/caled/caled.component";
+import { SubA1 as A_SubA1_SubA1 } from "./router/A/SubA1/SubA1.component";
 
-import { router_call_call } from "./router/call/call.component";
+import { B as B_B } from "./router/B/B.component";
 
-import { Root_Root } from "./Root/Root.component";
+import { checkbox as checkbox_checkbox } from "./router/checkbox/checkbox.component";
 
-import { A_A } from "./A/A.component";
+import { web as web_web } from "./web/web.component";
 
-import { A_SubA1_SubA1 } from "./A/SubA1/SubA1.component";
+import { web1 as aaa_web1 } from "./aaa/web1.component";
 
-import { WebClientaa_WebClientaa } from "./WebClientaa/WebClientaa.component";
+import { WEBListBox1 as WEBListBox1_WEBListBox1 } from "./WEBListBox1/WEBListBox1.component";
+
+import { WebClientaa as WebClientaa_WebClientaa } from "./WebClientaa/WebClientaa.component";
+
+import { modal as modal_modal } from "./modal/modal.component";
+
+import { web as web_web } from "./aaa/web/web.component";
 
 export class ComponentsList extends ComponentListBase {
 	static compHash: { [x: string]: any } = {
-		web_web: web_web.web,
+		caled_caled: caled_caled,
 
-		aaa_web1: aaa_web1.web1,
+		call_call: call_call,
 
-		checkbox_checkbox: checkbox_checkbox.checkbox,
+		Root_Root: Root_Root,
 
-		WEBListBox1_WEBListBox1: WEBListBox1_WEBListBox1.WEBListBox1,
+		A_A: A_A,
 
-		caled_caled: router_caled_caled.caled,
+		A_SubA1_SubA1: A_SubA1_SubA1,
 
-		call_call: router_call_call.call,
+		B_B: B_B,
 
-		Root_Root: Root_Root.Root,
+		checkbox_checkbox: checkbox_checkbox,
 
-		A_A: A_A.A,
+		web_web: web_web,
 
-		A_SubA1_SubA1: A_SubA1_SubA1.SubA1,
+		aaa_web1: aaa_web1,
 
-		WebClientaa_WebClientaa: WebClientaa_WebClientaa.WebClientaa
+		WEBListBox1_WEBListBox1: WEBListBox1_WEBListBox1,
+
+		WebClientaa_WebClientaa: WebClientaa_WebClientaa,
+
+		modal_modal: modal_modal,
+
+		web_web: web_web
 	};
 
 	static ComponentArray: any[] = [
-		web_web.web,
+		caled_caled,
 
-		aaa_web1.web1,
+		call_call,
 
-		checkbox_checkbox.checkbox,
+		Root_Root,
 
-		WEBListBox1_WEBListBox1.WEBListBox1,
+		A_A,
 
-		router_caled_caled.caled,
+		A_SubA1_SubA1,
 
-		router_call_call.call,
+		B_B,
 
-		Root_Root.Root,
+		checkbox_checkbox,
 
-		A_A.A,
+		web_web,
 
-		A_SubA1_SubA1.SubA1,
+		aaa_web1,
 
-		WebClientaa_WebClientaa.WebClientaa
+		WEBListBox1_WEBListBox1,
+
+		WebClientaa_WebClientaa,
+
+		modal_modal,
+
+		web_web
 	];
 
 	static getArray() {

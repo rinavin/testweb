@@ -3,42 +3,43 @@
     [formGroup]="screenFormGroup"
 >
     <div
+        style="display: flex; flex-direction: column"
         magic="call"
         class="callProps"
     >
-        <label
-            magic="Label11534338"
-            class="Label11534338Props"
-        >
-            call:
-            </label>
-            <div>
-                <input
-                    type="text"
-                    formControlName="call"
-                    magic="call"
-                    class="callProps"
-                    pattern="^.{0,10}$"
-                />
-                <div *ngIf="(screenFormGroup.get('call').touched) && (
+        <div style="display: flex; flex-direction: row">
+            <label
+                magic="Label11534338"
+                class="Label11534338Props"
+            >
+                call:
+                </label>
+                <div>
+                    <input
+                        type="text"
+                        formControlName="call"
+                        magic="call"
+                        class="callProps"
+                        pattern="^.{0,10}$"
+                    />
+                    <div *ngIf="(screenFormGroup.get('call').touched) && (
                         screenFormGroup.get('call').hasError('pattern')
                         
                         )">
-                    <p>control status: {{ screenFormGroup.get('call').errors | json }}</p>
+                        <p>control status: {{ screenFormGroup.get('call').errors | json }}</p>
+                    </div>
                 </div>
-            </div>
-            <button
-                magic="Button11534339"
-                class="Button11534339Props"
+        </div>
+        <button
+            magic="Button11534339"
+            class="Button11534339Props"
+        >
+            {{mgGetValue('Button11534339')}}
+            </button>
+            <m-subform
+                magic="Subform11534340"
+                class="Subform11534340Props"
             >
-                {{mgGetValue('Button11534339')}}
-                </button>
-                <div class="Subform11534340Props">
-                    <m-subform
-                        magic="Subform11534340"
-                        class="Subform11534340Props"
-                    >
-                        </m-subform>
-                </div>
+                </m-subform>
                 </div>
                 </form>

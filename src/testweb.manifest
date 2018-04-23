@@ -1,26 +1,6 @@
 {
   "components": [
     {
-      "path": "web/",
-      "name": "web",
-      "uniqueName": "web_web"
-    },
-    {
-      "path": "aaa/",
-      "name": "web1",
-      "uniqueName": "aaa_web1"
-    },
-    {
-      "path": "checkbox/",
-      "name": "checkbox",
-      "uniqueName": "checkbox_checkbox"
-    },
-    {
-      "path": "WEBListBox1/",
-      "name": "WEBListBox1",
-      "uniqueName": "WEBListBox1_WEBListBox1"
-    },
-    {
       "path": "router/caled/",
       "name": "caled",
       "uniqueName": "caled_caled"
@@ -31,24 +11,59 @@
       "uniqueName": "call_call"
     },
     {
-      "path": "Root/",
+      "path": "router/Root/",
       "name": "Root",
       "uniqueName": "Root_Root"
     },
     {
-      "path": "A/",
+      "path": "router/A/",
       "name": "A",
       "uniqueName": "A_A"
     },
     {
-      "path": "A/SubA1/",
+      "path": "router/A/SubA1/",
       "name": "SubA1",
       "uniqueName": "A_SubA1_SubA1"
+    },
+    {
+      "path": "router/B/",
+      "name": "B",
+      "uniqueName": "B_B"
+    },
+    {
+      "path": "router/checkbox/",
+      "name": "checkbox",
+      "uniqueName": "checkbox_checkbox"
+    },
+    {
+      "path": "web/",
+      "name": "web",
+      "uniqueName": "web_web"
+    },
+    {
+      "path": "aaa/",
+      "name": "web1",
+      "uniqueName": "aaa_web1"
+    },
+    {
+      "path": "WEBListBox1/",
+      "name": "WEBListBox1",
+      "uniqueName": "WEBListBox1_WEBListBox1"
     },
     {
       "path": "WebClientaa/",
       "name": "WebClientaa",
       "uniqueName": "WebClientaa_WebClientaa"
+    },
+    {
+      "path": "modal/",
+      "name": "modal",
+      "uniqueName": "modal_modal"
+    },
+    {
+      "path": "aaa/web/",
+      "name": "web",
+      "uniqueName": "web_web"
     }
   ]
 }

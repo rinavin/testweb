@@ -17,6 +17,7 @@ import {TimeFormatPipe} from './src/ui/magic-timetransform-pipe';
 import {RangeValidator} from './src/ui/magic-range-validator.directive';
 import {Subform} from './src/ui/subform-component';
 import {MagicCheckboxDirective, MatCheckboxDirective} from './src/ui/magic-checkbox.directive';
+import{RouterModule} from "@angular/router";
 
 const comps = ComponentsList.getAllComponents();
 
@@ -37,7 +38,7 @@ const decs = [
   TimeFormatPipe,
   RangeValidator,
   MagicRouterContainer,
-  Subform
+  Subform,
 ];
 
 @NgModule({
@@ -46,6 +47,7 @@ const decs = [
   imports: [
     CommonModule,
     ThemeModule,
+    RouterModule,
     DynamicModule.withComponents([MagicModalWindow])
   ],
   entryComponents: [  comps]

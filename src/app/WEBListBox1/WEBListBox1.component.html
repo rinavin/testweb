@@ -3,53 +3,58 @@
     [formGroup]="screenFormGroup"
 >
     <div
+        style="display: flex; flex-direction: column"
         magic="WEBListBox1"
         class="WEBListBox1Props"
     >
-        <label
-            magic="Label1"
-            class="Label1Props"
-        >
-            {{mgGetText('Label1')}}
-            </label>
+        <div style="display: flex; flex-direction: row">
             <label
-                magic="Label2"
-                class="Label2Props mgColor3"
+                magic="Label1"
+                class="Label1Props"
             >
-                {{mgGetText('Label2')}}
+                {{mgGetText('Label1')}}
                 </label>
-                <div>
-                    <select
-                        multiple
-                        (change)="mgOnListBoxSelectionChanged($event,'ListBox')"
-                        magic="ListBox"
-                        class="ListBoxProps"
-                        formControlName="ListBox"
+                <label
+                    magic="Label2"
+                    class="Label2Props mgColor3"
+                >
+                    {{mgGetText('Label2')}}
+                    </label>
+        </div>
+        <div style="display: flex; flex-direction: row">
+            <div>
+                <select
+                    multiple
+                    (change)="mgOnListBoxSelectionChanged($event,'ListBox')"
+                    magic="ListBox"
+                    class="ListBoxProps"
+                    formControlName="ListBox"
+                >
+                    <option
+                        *ngFor="let o of mgGetItemListValues('ListBox');"
+                        [value]="o.index"
                     >
-                        <option
-                            *ngFor="let o of mgGetItemListValues('ListBox');"
-                            [value]="o.index"
-                        >
-                            {{o.realString}}
-                            </option>
-                            </select>
-                </div>
-                <div>
-                    <select
-                        (change)="mgOnSelectionChanged($event,'ComboBox')"
-                        value="mgGetSelectedValue('ComboBox')"
-                        magic="ComboBox"
-                        class="ComboBoxProps"
-                        formControlName="ComboBox"
+                        {{o.realString}}
+                        </option>
+                        </select>
+            </div>
+            <div>
+                <select
+                    (change)="mgOnSelectionChanged($event,'ComboBox')"
+                    value="mgGetSelectedValue('ComboBox')"
+                    magic="ComboBox"
+                    class="ComboBoxProps"
+                    formControlName="ComboBox"
+                >
+                    <option
+                        *ngFor="let o of mgGetItemListValues('ComboBox');"
+                        [selected]="o.index == mgGetSelectedValue('ComboBox')"
+                        [value]="o.index"
                     >
-                        <option
-                            *ngFor="let o of mgGetItemListValues('ComboBox');"
-                            [selected]="o.index == mgGetSelectedValue('ComboBox')"
-                            [value]="o.index"
-                        >
-                            {{o.realString}}
-                            </option>
-                            </select>
-                </div>
-                </div>
-                </form>
+                        {{o.realString}}
+                        </option>
+                        </select>
+            </div>
+        </div>
+        </div>
+        </form>

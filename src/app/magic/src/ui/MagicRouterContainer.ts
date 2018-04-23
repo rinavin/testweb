@@ -3,6 +3,8 @@ import {ActivatedRoute} from '@angular/router';
 import {BaseTaskMagicComponent} from './app.baseMagicComponent';
 import {MagicEngine} from '../services/magic.engine';
 import {GuiEvent} from "@magic/engine";
+import {List, Array_Enumerator} from "@magic/mscorelib";
+import {StrUtil} from "@magic/utils";
 
 @Component({
   selector: 'app-container',
@@ -25,6 +27,29 @@ export class MagicRouterContainer implements OnInit {
 
       if (this.activatedRoute.snapshot.routeConfig.outlet !== 'primary')
         guiEvent.RouterOutletName = this.activatedRoute.snapshot.routeConfig.outlet;
+
+      let paramsNames: List <string> =  new List();
+      let paramVals: List <any> =  new List();
+
+      let routerPath: string = guiEvent.RouterPath;
+      let tokens: Array_Enumerator<string> = new Array_Enumerator(StrUtil.tokenize(routerPath, "/:"));
+      for (let i = 0; tokens.MoveNext(); i++) {
+        let token = <string>tokens.Current;
+        paramsNames.push(token);
+      }
+
+
+      this.activatedRoute.params.subscribe(params => {
+        for (let i = 1; i < paramsNames.length; i++) {
+          paramVals.push(params[paramsNames[i]]);
+        }
+
+      });
+
+      if (paramsNames.length > 0)
+        guiEvent.RouterPath = paramsNames[0];
+
+      guiEvent.RouterParams = paramVals;
 
       this.magic.insertEvent(guiEvent);
     }

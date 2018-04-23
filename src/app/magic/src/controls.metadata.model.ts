@@ -101,7 +101,7 @@ export class Records {
   list:ControlsMetadata[]=[] ; //used for sequential access in table
   includesFirst:boolean;
   includesLast:boolean;
-
+  guiTopIndex:number;
 
   markRowAsCreated(row:number): void
   {
@@ -174,6 +174,23 @@ export class Records {
   fromJson(data: string) {
     var obj = JSON.parse(data);
     this.update(obj);
+  }
+
+  setGuiTopIndex(topIndex: number){
+    if (!this.includesFirst)
+      topIndex++;
+
+    this.guiTopIndex = topIndex;
+  }
+
+  getGuiTopIndex() : number
+  {
+    let topIndex:number = this.guiTopIndex;
+
+    if (!this.includesFirst)
+      topIndex--
+
+    return topIndex;
   }
 
 }

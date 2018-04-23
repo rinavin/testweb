@@ -4,12 +4,10 @@ import { BaseTaskMagicComponent } from "../../magic/src/ui/app.baseMagicComponen
 
 import { TaskMagicService } from "../../magic/src/services/task.magics.service";
 
-export namespace router_caled_caled {
-	@Component({
-		selector: "mga-caled",
-		providers: [TaskMagicService],
-		styleUrls: ["./caled.component.css"],
-		templateUrl: "./caled.component.html"
-	})
-	export class caled extends BaseTaskMagicComponent {}
-}
+@Component({
+	selector: "mga-caled",
+	providers: [TaskMagicService],
+	styleUrls: ["./caled.component.css"],
+	templateUrl: "./caled.component.html"
+})
+export class caled extends BaseTaskMagicComponent {}

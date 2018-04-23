@@ -3,30 +3,34 @@
     [formGroup]="screenFormGroup"
 >
     <div
+        style="display: flex; flex-direction: column"
         magic="web1"
         class="web1Props"
     >
-        <label
-            magic="Label11534365"
-            class="Label11534365Props"
-        >
-            a:
-            </label>
-            <div>
-                <input
-                    type="text"
-                    formControlName="a"
-                    magic="a"
-                    class="aProps"
-                    pattern="^.{0,10}$"
-                />
-                <div *ngIf="(screenFormGroup.get('a').touched) && (
+        <div style="display: flex; flex-direction: row">
+            <label
+                magic="Label11534365"
+                class="Label11534365Props"
+            >
+                a:
+                </label>
+                <div>
+                    <input
+                        type="text"
+                        formControlName="a"
+                        magic="a"
+                        class="aProps"
+                        pattern="^.{0,10}$"
+                    />
+                    <div *ngIf="(screenFormGroup.get('a').touched) && (
                         screenFormGroup.get('a').hasError('pattern')
                         
                         )">
-                    <p>control status: {{ screenFormGroup.get('a').errors | json }}</p>
+                        <p>control status: {{ screenFormGroup.get('a').errors | json }}</p>
+                    </div>
                 </div>
-            </div>
+        </div>
+        <div style="display: flex; flex-direction: row">
             <label
                 magic="Label11534366"
                 class="Label11534366Props"
@@ -48,21 +52,22 @@
                         <p>control status: {{ screenFormGroup.get('b').errors | json }}</p>
                     </div>
                 </div>
-                <div>
-                    <select
-                        multiple
-                        (change)="mgOnListBoxSelectionChanged($event,'tmpID2')"
-                        magic="tmpID2"
-                        class="tmpID2Props"
-                        formControlName="tmpID2"
-                    >
-                        <option
-                            *ngFor="let o of mgGetItemListValues('tmpID2');"
-                            [value]="o.index"
-                        >
-                            {{o.realString}}
-                            </option>
-                            </select>
-                </div>
-                </div>
-                </form>
+        </div>
+        <div>
+            <select
+                multiple
+                (change)="mgOnListBoxSelectionChanged($event,'b_0001')"
+                magic="b_0001"
+                class="b_0001Props"
+                formControlName="b_0001"
+            >
+                <option
+                    *ngFor="let o of mgGetItemListValues('b_0001');"
+                    [value]="o.index"
+                >
+                    {{o.realString}}
+                    </option>
+                    </select>
+        </div>
+        </div>
+        </form>

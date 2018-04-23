@@ -1,0 +1,8 @@
+{
+  "directory" : "./@magic/engine",
+  "delete"   : true,
+  "location" : "top",
+  "name" : "index",
+  "structure" : "flat",
+  "verbose" : "true"
+}

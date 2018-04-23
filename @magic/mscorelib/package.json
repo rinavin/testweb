@@ -1,0 +1,24 @@
+{
+  "name": "@magic/mscorelib",
+  "version": "0.0.24",
+  "description": "magic mscorelib package",
+  "ngPackage": {
+    "$schema": "../../node_modules/ng-packagr/package.schema.json",
+    "dest": "../../libs/magic-mscorelib",
+    "workingDirectory": "../ng_build",
+    "whitelistedNonPeerDependencies": [
+      "moment"
+    ],
+    "lib": {
+      "entryFile": "index.ts"
+    }
+  },
+  "dependencies": {
+    "moment": "^2.22.0"
+  },
+  "devDependencies": {
+    "@types/stacktrace-js": "0.0.32",
+    "codelyzer": "^4.0.2",
+    "tslint": "^5.8.0"
+  }
+}

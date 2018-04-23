@@ -1,0 +1,22 @@
+{
+  "name": "@magic/gui",
+  "version": "0.0.1",
+  "ngPackage": {
+    "$schema": "../../node_modules/ng-packagr/package.schema.json",
+    "dest": "../../libs/magic-gui",
+    "workingDirectory": "../ng_build",
+    "whitelistedNonPeerDependencies": [
+      "timers"
+    ],
+    "lib": {
+      "entryFile": "index.ts"
+    }
+  },
+  "dependencies": {
+    "timers" : "^0.1.1"
+  },
+  "peerDependencies": {
+    
+    "@magic/utils" : "*"
+  }
+}

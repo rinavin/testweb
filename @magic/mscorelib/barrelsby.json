@@ -1,0 +1,8 @@
+{
+  "directory" : "./@magic/mscorelib",
+  "delete"   : true,
+  "location" : "top",
+  "name" : "index",
+  "structure" : "flat",
+  "verbose" : "true"
+}
