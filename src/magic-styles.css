@@ -88,16 +88,15 @@
 
 
 
-
+/* remark : we decided to give the end user the normal list box without you update the behavior*/
 /*for matirial list box control*/
 /*hide the check box*/
-mat-list-option mat-pseudo-checkbox.mat-pseudo-checkbox{
-display: none;
-}
-
-/*for matirial list box control*/
-/* for selected item that is true the style will be by following */
-mat-list-option[aria-selected = "true"]
-{
-  background-color: blue;
-}
+/*mat-list-option mat-pseudo-checkbox.mat-pseudo-checkbox{*/
+/*display: none;*/
+/*}*/
+/*!*for matirial list box control*!*/
+/*!* for selected item that is true the style will be by following *!*/
+/*mat-list-option[aria-selected = "true"]*/
+/*{*/
+  /*background-color: blue;*/
+/*}*/

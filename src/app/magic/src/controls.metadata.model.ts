@@ -9,6 +9,9 @@ export class ControlMetadata {
   removedClass: string;
   classes: string  ;
 
+  // user properties
+  userProperties: Map<string, any> = new Map();
+
   setClass(key, value) {
     // for no-control - hold the name of the class to be removed later
     if(this.classesMap[key] != '') {

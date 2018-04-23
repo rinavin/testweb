@@ -260,6 +260,12 @@ executeCommand(command: GuiCommand): void {
         if (command.Operation === HtmlProperties.SelectedRow)
           this.selectRow(command.obj1); //template method that allow overwite
         break;
+
+      case CommandType.PROP_SET_USER_PROPERTY:
+        properties = this.task.Records.list[rowId].getControlMetadata(controlId);
+        properties.userProperties[command.Operation] = command.obj1;
+        break;
+
       case CommandType.SET_CLASS:
         properties = this.task.Records.list[rowId].getControlMetadata(controlId);
         properties.setClass(command.Operation, command.obj1);
@@ -387,6 +393,24 @@ executeCommand(command: GuiCommand): void {
     let val = this.task.getValue(controlId, rowId);
     return val;
   }
+
+  mgGetCustomProperty(controlId, propertyName, rowId?) {
+    let userProperties;
+    if (isNullOrUndefined(rowId))
+      rowId = '0';
+    let rec = this.task.Records.list[rowId];
+    if (isNullOrUndefined(rec))
+      debugger;
+    else {
+      const controlMetadata = rec.getControlMetadata(controlId);
+
+      if (propertyName in controlMetadata.userProperties) {
+        userProperties = controlMetadata.userProperties[propertyName];
+      }
+    }
+    return userProperties;
+  }
+
 
   mgGetItemListValues(id) {
     return this.getProperty(id, HtmlProperties.ItemsList);
