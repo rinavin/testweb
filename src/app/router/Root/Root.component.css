@@ -1,0 +1,25 @@
+/*this is a component css*/
+
+.RootProps {
+    background-repeat: repeat;
+}
+
+.label1Props {
+    overflow: hidden;
+}
+
+.root_v1Props {}
+
+.Button4Props {}
+
+.Button5Props {}
+
+.Button7Props {}
+
+.Subform3Props {
+    border: lightskyblue solid 1px;
+}
+
+.RouterOutlet1Props {
+    border: lightskyblue solid 1px;
+}

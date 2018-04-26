@@ -1,0 +1,57 @@
+<form
+    novalidate
+    [formGroup]="screenFormGroup"
+>
+    <div
+        style="display: flex; flex-direction: column"
+        magic="web"
+        class="webProps"
+    >
+        <div style="display: flex; flex-direction: row">
+            <label
+                magic="Label11534361"
+                class="Label11534361Props"
+            >
+                a:
+                </label>
+                <div>
+                    <input
+                        type="text"
+                        formControlName="a"
+                        magic="a"
+                        class="aProps"
+                        pattern="^.{0,10}$"
+                    />
+                    <div *ngIf="(screenFormGroup.get('a').touched) && (
+                        screenFormGroup.get('a').hasError('pattern')
+                        
+                        )">
+                        <p>control status: {{ screenFormGroup.get('a').errors | json }}</p>
+                    </div>
+                </div>
+        </div>
+        <div style="display: flex; flex-direction: row">
+            <label
+                magic="Label11534362"
+                class="Label11534362Props"
+            >
+                b:
+                </label>
+                <div>
+                    <input
+                        type="text"
+                        formControlName="b"
+                        magic="b"
+                        class="bProps"
+                        pattern="^.{0,10}$"
+                    />
+                    <div *ngIf="(screenFormGroup.get('b').touched) && (
+                        screenFormGroup.get('b').hasError('pattern')
+                        
+                        )">
+                        <p>control status: {{ screenFormGroup.get('b').errors | json }}</p>
+                    </div>
+                </div>
+        </div>
+        </div>
+        </form>

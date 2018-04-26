@@ -1,6 +1,31 @@
 {
   "components": [
     {
+      "path": "aaa/",
+      "name": "web1",
+      "uniqueName": "aaa_web1"
+    },
+    {
+      "path": "WEBListBox1/",
+      "name": "WEBListBox1",
+      "uniqueName": "WEBListBox1_WEBListBox1"
+    },
+    {
+      "path": "WebClientaa/",
+      "name": "WebClientaa",
+      "uniqueName": "WebClientaa_WebClientaa"
+    },
+    {
+      "path": "modal/",
+      "name": "modal",
+      "uniqueName": "modal_modal"
+    },
+    {
+      "path": "aaa/web/",
+      "name": "web",
+      "uniqueName": "web_web"
+    },
+    {
       "path": "router/caled/",
       "name": "caled",
       "uniqueName": "caled_caled"
@@ -36,34 +61,9 @@
       "uniqueName": "checkbox_checkbox"
     },
     {
-      "path": "web/",
-      "name": "web",
-      "uniqueName": "web_web"
-    },
-    {
-      "path": "aaa/",
-      "name": "web1",
-      "uniqueName": "aaa_web1"
-    },
-    {
-      "path": "WEBListBox1/",
-      "name": "WEBListBox1",
-      "uniqueName": "WEBListBox1_WEBListBox1"
-    },
-    {
-      "path": "WebClientaa/",
-      "name": "WebClientaa",
-      "uniqueName": "WebClientaa_WebClientaa"
-    },
-    {
-      "path": "modal/",
-      "name": "modal",
-      "uniqueName": "modal_modal"
-    },
-    {
-      "path": "aaa/web/",
-      "name": "web",
-      "uniqueName": "web_web"
+      "path": "GroupWithinGroup/",
+      "name": "GroupWithinGroup",
+      "uniqueName": "GroupWithinGroup_GroupWithinGroup"
     }
   ]
 }

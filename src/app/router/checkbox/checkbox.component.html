@@ -1,0 +1,60 @@
+<form
+    novalidate
+    [formGroup]="screenFormGroup"
+>
+    <div
+        style="display: flex; flex-direction: column"
+        magic="checkbox"
+        class="checkboxProps"
+    >
+        <div style="display: flex; flex-direction: row">
+            <label
+                magic="Label11534339"
+                class="Label11534339Props"
+            >
+                program b
+                </label>
+                <div>
+                    <input
+                        type="text"
+                        formControlName="a"
+                        magic="a"
+                        class="aProps"
+                        pattern="^.{0,10}$"
+                    />
+                    <div *ngIf="(screenFormGroup.get('a').touched) && (
+                        screenFormGroup.get('a').hasError('pattern')
+                        
+                        )">
+                        <p>control status: {{ screenFormGroup.get('a').errors | json }}</p>
+                    </div>
+                </div>
+        </div>
+        <label
+            magic="Label11534340"
+            class="Label11534340Props"
+        >
+            {{mgGetText('Label11534340')}}
+            </label>
+            <div>
+                <div
+                    magic="b"
+                    class="bProps"
+                >
+                    <input
+                        type="checkbox"
+                        id="b"
+                        formControlName="b"
+                        (change)="mgOnCheckChanged($event,'b')"
+                    />
+                    <label for="b">
+        
+        
+        bbbb
+        
+        
+    </label>
+            </div>
+            </div>
+            </div>
+            </form>
