@@ -1,8 +1,6 @@
 import { Component } from "@angular/core";
+import { BaseTaskMagicComponent,TaskMagicService } from "@magic/angular";
 
-import { BaseTaskMagicComponent } from "../magic/src/ui/app.baseMagicComponent";
-
-import { TaskMagicService } from "../magic/src/services/task.magics.service";
 
 import {
 	MatPaginator,
@@ -25,7 +23,8 @@ export class WebClientaa extends BaseTaskMagicComponent {
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
 	displayedColumns = ["a", "b", "log"];
-	constructor(
+  public dialog: MatDialog;
+	/*constructor(
 		public dialog: MatDialog,
 		protected ref: ChangeDetectorRef,
 		protected task: TaskMagicService,
@@ -33,7 +32,7 @@ export class WebClientaa extends BaseTaskMagicComponent {
 		protected activatedRoute: ActivatedRoute
 	) {
 		super(ref, task, router, activatedRoute);
-	}
+	}*/
 	dataSource = new MatTableDataSource<Element>(this.task.Records.list);
 	selection = new SelectionModel<Element>(false, []);
 

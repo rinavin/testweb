@@ -1,8 +1,6 @@
 import { Component } from "@angular/core";
 
-import { BaseTaskMagicComponent } from "../magic/src/ui/app.baseMagicComponent";
-
-import { TaskMagicService } from "../magic/src/services/task.magics.service";
+import { BaseTaskMagicComponent,TaskMagicService } from "@magic/angular";
 
 export namespace A_A {
 	@Component({

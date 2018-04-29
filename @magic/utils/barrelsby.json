@@ -1,8 +1,0 @@
-{
-  "directory" : "./@magic/utils",
-  "delete"   : true,
-  "location" : "top",
-  "name" : "index",
-  "structure" : "flat",
-  "verbose" : "true"
-}

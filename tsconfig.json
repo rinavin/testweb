@@ -17,6 +17,10 @@
       "@magic/utils":     ["D:/xpa_tfs/magicxpaproject/_Trunk/Sources/Webclient/@magic/utils"    ],
       "@magic/gui":       ["D:/xpa_tfs/magicxpaproject/_Trunk/Sources/Webclient/@magic/gui"      ],
       "@magic/engine":    ["D:/xpa_tfs/magicxpaproject/_Trunk/Sources/Webclient/@magic/engine"   ]
+
+      "@magic/angular":       ["D:/xpa_tfs/magicxpaproject/_Trunk/Sources/Webclient/@magic/angular"      ],
+      "@magic/angular-material-core":       ["D:/xpa_tfs/magicxpaproject/_Trunk/Sources/Webclient/@magic/angular-material-core"      ]
+
     },
 
     "lib": [
